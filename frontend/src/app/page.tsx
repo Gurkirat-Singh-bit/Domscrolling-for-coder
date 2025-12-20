@@ -1,8 +1,104 @@
+'use client';
+
+import Hero from "@/components/ui/neural-network-hero";
+import Navbar from "@/components/layout/Navbar";
+import { FeaturesSectionWithHoverEffects } from "@/components/blocks/feature-section-with-hover-effects";
+import { About3 } from "@/components/ui/about-3";
+import { Footer } from "@/components/ui/footer";
 import Image from "next/image";
+import { useEffect } from "react";
+import Lenis from '@studio-freight/lenis';
+import { Github } from "lucide-react";
+
 export default function Home() {
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true,
+    });
+
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+    return () => {
+      lenis.destroy();
+    };
+  }, []);
+
   return (
-    <div className="">
-   
-    </div>
+    <main className="relative min-h-screen bg-black">
+      <Navbar />
+      
+      <div className="relative">
+        <Hero
+          title="Scroll better. Learn faster."
+          description="Domscrolling curates short, focused coding reels — the best ideas, libraries, and techniques for devs that are worth your attention."
+          badgeText="Curated for coders"
+          badgeLabel="Beta"
+          ctaButtons={[
+            { text: "Join the feed", href: "/register", primary: true },
+            { text: "See how it works", href: "#how-it-works" }
+          ]}
+          microDetails={["Short clips", "High signal", "Daily refresh"]}
+        />
+
+        {/* Right-side mobile mockup with sample screenshot */}
+        <div className="pointer-events-none hidden lg:flex absolute top-[18%] right-12 z-10">
+          <div className="relative w-60 h-[520px] rounded-[2rem] border-4 border-white/10 bg-black overflow-hidden shadow-2xl">
+            <Image
+              src="/sample-images/Screenshot_2025-04-07-10-47-25-976_com.instagram.android.jpg"
+              alt="App preview"
+              fill
+              className="object-cover"
+              priority
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* Features Section */}
+      <section className="relative w-full bg-black py-20 scale-90">
+        <FeaturesSectionWithHoverEffects />
+      </section>
+
+      {/* About Section */}
+      <About3 />
+
+      {/* Footer */}
+      <Footer
+        logo={
+          <svg className="h-8 w-8 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+          </svg>
+        }
+        brandName="Domscrolling"
+        socialLinks={[
+          {
+            icon: <Github className="h-5 w-5" />,
+            href: "https://github.com/Gurkirat-Singh-bit/Domscrolling-for-coder",
+            label: "GitHub",
+          },
+        ]}
+        mainLinks={[
+          { href: "#how-it-works", label: "How it works" },
+          { href: "#features", label: "Features" },
+          { href: "#about", label: "About" },
+          { href: "/register", label: "Join" },
+        ]}
+        legalLinks={[
+          { href: "/privacy", label: "Privacy" },
+          { href: "/terms", label: "Terms" },
+        ]}
+        copyright={{
+          text: "© 2025 Domscrolling",
+          license: "Built for coders, by coders",
+        }}
+      />
+    </main>
   );
 }

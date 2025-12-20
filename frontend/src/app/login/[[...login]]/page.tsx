@@ -4,7 +4,7 @@ import { SignIn } from "@clerk/nextjs";
 
 export default function LoginPage() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-50">
+    <div className="flex min-h-screen items-center justify-center bg-background">
       <div className="w-full max-w-md">
         <SignIn
           routing="path"
@@ -13,7 +13,7 @@ export default function LoginPage() {
           afterSignInUrl="/pages/landing"
           appearance={{
             elements: {
-              formButtonPrimary: "bg-blue-600 hover:bg-blue-700 text-sm",
+              formButtonPrimary: "bg-primary hover:bg-primary/90 text-sm text-primary-foreground",
               card: "shadow-xl",
             },
           }}
