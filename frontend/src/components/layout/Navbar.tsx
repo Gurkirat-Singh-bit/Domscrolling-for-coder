@@ -1,7 +1,6 @@
 'use client';
 
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -12,7 +11,7 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
-import { Search } from "lucide-react";
+import { Github } from "lucide-react";
 import Link from "next/link";
 import * as React from "react";
 
@@ -79,19 +78,19 @@ export default function Navbar() {
           </NavigationMenu>
         </div>
         <div className="flex items-center space-x-3">
-          <form className="relative hidden sm:block">
-            <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-white/40" />
-            <Input 
-              type="search" 
-              placeholder="Search topics..." 
-              className="pl-8 bg-white/5 border-white/10 text-white placeholder:text-white/40 focus:bg-white/10 focus:border-white/20 transition-all" 
-            />
-          </form>
+          <Link 
+            href="https://github.com/Gurkirat-Singh-bit/Domscrolling-for-coder"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-white/60 hover:text-white transition-colors"
+          >
+            <Github className="h-5 w-5" />
+          </Link>
           <Button 
             asChild
             className="bg-white/10 text-white border border-white/10 hover:bg-white/20 transition-all"
           >
-            <Link href="/login">Sign In</Link>
+            <Link href="/login">Login</Link>
           </Button>
         </div>
       </div>

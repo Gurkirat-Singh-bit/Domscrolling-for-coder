@@ -43,6 +43,5 @@
   1.2 Hero Section ->
     - this will use this compoonent from 21st.dev - https://cdn.21st.dev/66hex/neural-network-hero/default/bundle.1756161279306.html?theme=dark
     - on the right hand side a mobile screen mockup showing the reels page of our platform. and scrolling animation using sample images from public/sameple-images
-  1.3 Isometric reels grid ->
-    - this section will showcase screenshots of the reel in the platform in an isometric grid layout that is titlted.  
+
   

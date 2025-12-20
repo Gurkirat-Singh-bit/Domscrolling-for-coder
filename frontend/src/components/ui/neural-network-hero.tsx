@@ -183,33 +183,28 @@ function ShaderPlane() {
 
 function ShaderBackground() {
   const canvasRef = useRef<HTMLDivElement | null>(null);
-  
   const camera = useMemo(() => ({ position: [0, 0, 1] as [number, number, number], fov: 75, near: 0.1, far: 1000 }), []);
-  
+
   useGSAP(
     () => {
       if (!canvasRef.current) return;
-      
+
       gsap.set(canvasRef.current, {
-        filter: 'blur(20px)',
-        scale: 1.1,
-        autoAlpha: 0.7
+        autoAlpha: 0
       });
-      
+
       gsap.to(canvasRef.current, {
-        filter: 'blur(0px)',
-        scale: 1,
         autoAlpha: 1,
-        duration: 1.5,
+        duration: 1.2,
         ease: 'power3.out',
-        delay: 0.3
+        delay: 0.15
       });
     },
     { scope: canvasRef }
   );
-  
+
   return (
-    <div ref={canvasRef} className="bg-black absolute inset-0 -z-10 w-full h-full" aria-hidden>
+    <div ref={canvasRef} className="absolute inset-0 -z-10 w-full h-full bg-black" aria-hidden>
       <Canvas
         camera={camera}
         gl={{ antialias: true, alpha: false }}
@@ -218,7 +213,10 @@ function ShaderBackground() {
       >
         <ShaderPlane />
       </Canvas>
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-black/20" />
+
+      {/* subtle color tints on top of the shader */}
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-neutral-900/30 via-transparent to-black/30" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-neutral-800/30 via-transparent to-transparent" />
     </div>
   );
 }
@@ -322,7 +320,7 @@ export default function Hero({
   );
 
   return (
-    <section ref={sectionRef} className="relative h-screen w-screen overflow-hidden">
+    <section ref={sectionRef} className="relative h-screen w-full overflow-hidden">
       <ShaderBackground />
 
       <div className="relative mx-auto flex max-w-7xl flex-col items-start gap-6 px-6 pb-24 pt-36 sm:gap-8 sm:pt-44 md:px-10 lg:px-16">
