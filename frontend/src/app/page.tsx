@@ -9,8 +9,8 @@
 
 import Hero from "@/components/ui/neural-network-hero";
 import { Iphone } from "@/components/ui/iphone"
-import Navbar from "@/components/layout/Navbar";
-import { FeaturesSectionWithHoverEffects } from "@/components/blocks/feature-section-with-hover-effects";
+import Navbar from "@/components/layout/Navbar/Navbar";
+import { FeaturesSectionWithHoverEffects } from "@/components/layout/landing/feature-section-with-hover-effects";
 import { About3 } from "@/components/ui/about-3";
 import { Footer } from "@/components/ui/footer";
 import Image from "next/image";
