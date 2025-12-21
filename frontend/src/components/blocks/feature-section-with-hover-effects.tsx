@@ -1,3 +1,10 @@
+/**
+ * @license MIT License
+ * @author Gurkirat Singh
+ * @file feature-section-with-hover-effects.tsx
+ * @file Feature grid used on the landing page, showing curated benefits with icons.
+ */
+
 import { cn } from "@/lib/utils";
 import {
   IconBrandYoutube,
@@ -10,6 +17,10 @@ import {
   IconBookmark,
 } from "@tabler/icons-react";
 
+/**
+ * Render a collection of feature cards with hover effects.
+ * @returns {JSX.Element} The features section component.
+ */
 export function FeaturesSectionWithHoverEffects() {
   const features = [
     {
@@ -67,6 +78,15 @@ export function FeaturesSectionWithHoverEffects() {
   );
 }
 
+/**
+ * Individual feature card displayed in the features grid.
+ * @param {object} props - Props for the feature component.
+ * @param {string} props.title - Title of the feature.
+ * @param {string} props.description - Short description for the feature.
+ * @param {React.ReactNode} props.icon - Icon element for the feature.
+ * @param {number} props.index - Index of the feature in the list, used for layout rules.
+ * @returns {JSX.Element} The feature card element.
+ */
 const Feature = ({
   title,
   description,
