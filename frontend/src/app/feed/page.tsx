@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import Link from "next/link";
 import { feedData } from "../../lib/demoFeed";
 
@@ -37,5 +38,20 @@ export default function FeedHomePage() {
         </div>
       ))}
     </div>
+=======
+/**
+ * @license MIT License
+ * @author Gurkirat Singh
+ * @file page.tsx
+ * @file Feed page that displays curated reels and content for logged-in users.
+ */
+
+export default function FeedPage() {
+  // TODO: Implement feed page content
+  return (
+    <main>
+      <h1>Feed</h1>
+    </main>
+>>>>>>> 17a5bfa5e143285a4b692d2ca667053eed1486b2
   );
 }
