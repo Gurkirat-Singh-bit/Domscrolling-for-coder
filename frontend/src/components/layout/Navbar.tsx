@@ -37,7 +37,7 @@ export default function Navbar() {
           <NavigationMenu className="hidden md:flex">
             <NavigationMenuList>
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="bg-transparent text-white/80 hover:text-white hover:bg-white/5">
+                <NavigationMenuTrigger className="nav-trigger bg-transparent text-white/80 hover:text-white">
                   Features
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
@@ -71,7 +71,7 @@ export default function Navbar() {
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <NavigationMenuLink
-                  className={cn(navigationMenuTriggerStyle(), "bg-transparent text-white/80 hover:text-white hover:bg-white/5")}
+                  className={cn(navigationMenuTriggerStyle(), "nav-trigger bg-transparent text-white/80 hover:text-white")}
                   href="#how-it-works"
                 >
                   How it works
@@ -79,7 +79,7 @@ export default function Navbar() {
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <NavigationMenuLink
-                  className={cn(navigationMenuTriggerStyle(), "bg-transparent text-white/80 hover:text-white hover:bg-white/5")}
+                  className={cn(navigationMenuTriggerStyle(), "nav-trigger bg-transparent text-white/80 hover:text-white")}
                   href="#about"
                 >
                   About
