@@ -8,6 +8,7 @@
 'use client';
 
 import Hero from "@/components/ui/neural-network-hero";
+import { Iphone } from "@/components/ui/iphone"
 import Navbar from "@/components/layout/Navbar";
 import { FeaturesSectionWithHoverEffects } from "@/components/blocks/feature-section-with-hover-effects";
 import { About3 } from "@/components/ui/about-3";
@@ -59,15 +60,9 @@ export default function Home() {
         />
 
         {/* Right-side mobile mockup with sample screenshot */}
-        <div className="pointer-events-none hidden lg:flex absolute top-[14%] right-30 z-10">
-          <div className="relative w-65 h-[520px] rounded-[2rem] border-2 border-white/10 bg-black overflow-hidden shadow-2xl">
-            <Image
-              src="/sample-images/Screenshot_2025-04-07-10-47-25-976_com.instagram.android.jpg"
-              alt="App preview"
-              fill
-              className="object-cover"
-              priority
-            />
+        <div className="pointer-events-none lg:flex absolute top-[14%] right-28 z-10 md:block hidden">
+          <div className="relative w-[200px] h-[400px] md:w-[260px] md:h-[520px] lg:w-80 lg:h-[600px] rounded-[2rem] border-2 border-white/10 bg-black overflow-hidden shadow-2xl">
+            <Iphone src="/sample-images/Screenshot_2025-04-07-10-47-25-976_com.instagram.android.jpg" />
           </div>
         </div>
       </div>

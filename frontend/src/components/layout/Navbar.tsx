@@ -21,6 +21,7 @@ import { cn } from "@/lib/utils";
 import { Github } from "lucide-react";
 import Link from "next/link";
 import * as React from "react";
+import { ModeToggle } from "@/components/ui/toggle-theme";
 
 /**
  * Top navigation bar which includes links, the brand, and action buttons.
@@ -97,6 +98,7 @@ export default function Navbar() {
           >
             <Github className="h-5 w-5" />
           </Link>
+          <ModeToggle />
           <Button 
             asChild
             className="bg-white/10 text-white border border-white/10 hover:bg-white/20 transition-all"
