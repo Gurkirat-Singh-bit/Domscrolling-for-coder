@@ -171,11 +171,19 @@ function ShaderPlane() {
     materialRef.current.iTime = state.clock.elapsedTime;
     const { width, height } = state.size;
     materialRef.current.iResolution.set(width, height);
+
+    // Ensure the plane scales to cover wide/ultra-wide viewports
+    const { width: vw, height: vh } = state.viewport;
+    if (meshRef.current) {
+      // center it vertically and slightly back so the shader fills the hero
+      meshRef.current.position.set(0, 0, -0.5);
+      meshRef.current.scale.set(vw * 1.6, vh * 1.6, 1);
+    }
   });
 
   return (
-    <mesh ref={meshRef} position={[0, -0.75, -0.5]}>
-      <planeGeometry args={[4, 4]} />
+    <mesh ref={meshRef} position={[0, 0, -0.5]}>
+      <planeGeometry args={[1, 1]} />
       <cPPNShaderMaterial ref={materialRef} side={THREE.DoubleSide} />
     </mesh>
   );
@@ -183,28 +191,33 @@ function ShaderPlane() {
 
 function ShaderBackground() {
   const canvasRef = useRef<HTMLDivElement | null>(null);
+  
   const camera = useMemo(() => ({ position: [0, 0, 1] as [number, number, number], fov: 75, near: 0.1, far: 1000 }), []);
-
+  
   useGSAP(
     () => {
       if (!canvasRef.current) return;
-
+      
       gsap.set(canvasRef.current, {
-        autoAlpha: 0
+        filter: 'blur(20px)',
+        scale: 1.1,
+        autoAlpha: 0.7
       });
-
+      
       gsap.to(canvasRef.current, {
+        filter: 'blur(0px)',
+        scale: 1,
         autoAlpha: 1,
-        duration: 1.2,
+        duration: 1.5,
         ease: 'power3.out',
-        delay: 0.15
+        delay: 0.3
       });
     },
     { scope: canvasRef }
   );
-
+  
   return (
-    <div ref={canvasRef} className="absolute inset-0 -z-10 w-full h-full bg-black" aria-hidden>
+    <div ref={canvasRef} className="bg-black absolute inset-0 z-0 w-full h-full" aria-hidden>
       <Canvas
         camera={camera}
         gl={{ antialias: true, alpha: false }}
@@ -213,10 +226,7 @@ function ShaderBackground() {
       >
         <ShaderPlane />
       </Canvas>
-
-      {/* subtle color tints on top of the shader */}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-neutral-900/30 via-transparent to-black/30" />
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-neutral-800/30 via-transparent to-transparent" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-black/20" />
     </div>
   );
 }
@@ -320,10 +330,10 @@ export default function Hero({
   );
 
   return (
-    <section ref={sectionRef} className="relative h-screen w-full overflow-hidden">
+    <section ref={sectionRef} className="relative h-screen w-screen overflow-hidden">
       <ShaderBackground />
 
-      <div className="relative mx-auto flex max-w-7xl flex-col items-start gap-6 px-6 pb-24 pt-36 sm:gap-8 sm:pt-44 md:px-10 lg:px-16">
+      <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-start gap-6 px-6 pb-24 pt-36 sm:gap-8 sm:pt-44 md:px-10 lg:px-16">
         <div ref={badgeRef} className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 backdrop-blur-sm">
           <span className="text-[10px] font-light uppercase tracking-[0.08em] text-white/70">{badgeLabel}</span>
           <span className="h-1 w-1 rounded-full bg-white/40" />

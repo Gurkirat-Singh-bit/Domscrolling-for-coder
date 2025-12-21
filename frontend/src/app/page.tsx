@@ -1,3 +1,10 @@
+/**
+ * @license MIT License
+ * @author Gurkirat Singh
+ * @file page.tsx
+ * @file Landing page for the application showing hero, features, and footer.
+ */
+
 'use client';
 
 import Hero from "@/components/ui/neural-network-hero";
@@ -10,6 +17,10 @@ import { useEffect } from "react";
 import Lenis from '@studio-freight/lenis';
 import { Github } from "lucide-react";
 
+/**
+ * Renders the landing page with hero, features, and footer.
+ * @returns {JSX.Element} The home page element.
+ */
 export default function Home() {
   useEffect(() => {
     const lenis = new Lenis({
@@ -41,15 +52,15 @@ export default function Home() {
           badgeText="Curated for coders"
           badgeLabel="Beta"
           ctaButtons={[
-            { text: "Join the feed", href: "/register", primary: true },
+            { text: "Join the feed", href: "/", primary: true },
             { text: "See how it works", href: "#how-it-works" }
           ]}
           microDetails={["Short clips", "High signal", "Daily refresh"]}
         />
 
         {/* Right-side mobile mockup with sample screenshot */}
-        <div className="pointer-events-none hidden lg:flex absolute top-[18%] right-12 z-10">
-          <div className="relative w-60 h-[520px] rounded-[2rem] border-4 border-white/10 bg-black overflow-hidden shadow-2xl">
+        <div className="pointer-events-none hidden lg:flex absolute top-[14%] right-30 z-10">
+          <div className="relative w-65 h-[520px] rounded-[2rem] border-2 border-white/10 bg-black overflow-hidden shadow-2xl">
             <Image
               src="/sample-images/Screenshot_2025-04-07-10-47-25-976_com.instagram.android.jpg"
               alt="App preview"

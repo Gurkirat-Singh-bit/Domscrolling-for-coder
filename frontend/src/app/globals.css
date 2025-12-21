@@ -122,4 +122,31 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  /* Navigation trigger: remove focus/hover outline and add subtle animated underline */
+  .nav-trigger {
+    position: relative;
+    outline: none !important;
+    box-shadow: none !important;
+  }
+  .nav-trigger:focus {
+    outline: none !important;
+    box-shadow: none !important;
+  }
+  .nav-trigger::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    height: 2px;
+    width: 0;
+    background: linear-gradient(90deg, rgba(255,255,255,0.08), rgba(255,255,255,0.18));
+    transition: width 330ms cubic-bezier(.2,.9,.2,1);
+    border-radius: 2px;
+  }
+  .nav-trigger:hover::after,
+  .nav-trigger[aria-expanded="true"]::after,
+  .nav-trigger[data-state="open"]::after {
+    width: 100%;
+  }
 }

@@ -1,3 +1,10 @@
+/**
+ * @license MIT License
+ * @author Gurkirat Singh
+ * @file Navbar.tsx
+ * @file Top navigation bar component used across the site.
+ */
+
 'use client';
 
 import { Button } from "@/components/ui/button";
@@ -15,6 +22,10 @@ import { Github } from "lucide-react";
 import Link from "next/link";
 import * as React from "react";
 
+/**
+ * Top navigation bar which includes links, the brand, and action buttons.
+ * @returns {JSX.Element} The navigation bar element.
+ */
 export default function Navbar() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-black/80 backdrop-blur-md">
@@ -26,7 +37,7 @@ export default function Navbar() {
           <NavigationMenu className="hidden md:flex">
             <NavigationMenuList>
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="bg-transparent text-white/80 hover:text-white hover:bg-white/5">
+                <NavigationMenuTrigger className="nav-trigger bg-transparent text-white/80 hover:text-white">
                   Features
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
@@ -60,7 +71,7 @@ export default function Navbar() {
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <NavigationMenuLink
-                  className={cn(navigationMenuTriggerStyle(), "bg-transparent text-white/80 hover:text-white hover:bg-white/5")}
+                  className={cn(navigationMenuTriggerStyle(), "nav-trigger bg-transparent text-white/80 hover:text-white")}
                   href="#how-it-works"
                 >
                   How it works
@@ -68,7 +79,7 @@ export default function Navbar() {
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <NavigationMenuLink
-                  className={cn(navigationMenuTriggerStyle(), "bg-transparent text-white/80 hover:text-white hover:bg-white/5")}
+                  className={cn(navigationMenuTriggerStyle(), "nav-trigger bg-transparent text-white/80 hover:text-white")}
                   href="#about"
                 >
                   About
@@ -98,6 +109,14 @@ export default function Navbar() {
   );
 }
 
+/**
+ * List item used inside the navigation menu.
+ * @param {object} props - Component props.
+ * @param {string} [props.className] - Additional classes to apply to the item.
+ * @param {string} props.title - Title text for the menu item.
+ * @param {React.ReactNode} props.children - Description or content for the item.
+ * @returns {JSX.Element} The navigation list item.
+ */
 const ListItem = React.forwardRef<
   React.ElementRef<"a">,
   React.ComponentPropsWithoutRef<"a">
