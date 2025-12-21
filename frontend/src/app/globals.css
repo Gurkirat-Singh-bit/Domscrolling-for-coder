@@ -1,5 +1,10 @@
 @import "tailwindcss";
-@import "tw-animate-css";
+/* tw-animate-css import disabled: Turbopack/PostCSS can't resolve the package's "style" export.
+  To enable animations, either:
+  - update the bundler to support package "style" exports, or
+  - copy ./node_modules/tw-animate-css/dist/tw-animate.css into your project and import it here.
+*/
+/* @import "tw-animate-css/dist/tw-animate.css"; */
 
 @custom-variant dark (&:is(.dark *));
 
