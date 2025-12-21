@@ -1,7 +1,17 @@
-<<<<<<< HEAD
+/**
+ * @license MIT License
+ * @author Zahid Hussain
+ * @file page.tsx
+ * @file The main feed home page displaying video sections with horizontal scrolling cards.
+ */
+
 import Link from "next/link";
 import { feedData } from "../../lib/demoFeed";
 
+
+/** * Renders the feed home page with video sections.
+ * @returns {JSX.Element} The feed home page element.
+ */
 export default function FeedHomePage() {
   return (
     <div className="space-y-10 p-4">
@@ -38,20 +48,5 @@ export default function FeedHomePage() {
         </div>
       ))}
     </div>
-=======
-/**
- * @license MIT License
- * @author Gurkirat Singh
- * @file page.tsx
- * @file Feed page that displays curated reels and content for logged-in users.
- */
-
-export default function FeedPage() {
-  // TODO: Implement feed page content
-  return (
-    <main>
-      <h1>Feed</h1>
-    </main>
->>>>>>> 17a5bfa5e143285a4b692d2ca667053eed1486b2
   );
 }
